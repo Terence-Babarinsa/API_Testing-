@@ -2,6 +2,8 @@
 using System;
 using System.Threading.Tasks;
 using System.Net.Http;
+using NUnit.Framework;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace API_Test
 {
@@ -9,16 +11,28 @@ namespace API_Test
     public class APITest
     {
 
-        private HttpClient httpClient;
+        private HttpClient client;
+
         [TestInitialize]
         public void Setup()
         {
-            httpClient = new HttpClient();
+            HttpClient client = new HttpClient();
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public async void NewsAPI()
         {
+            //HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("https://newsapi.org/v2/everything?q=apple&from=2023-11-21&to=2023-11-21&sortBy=popularity&apiKey=API_KEY");
+
+            Assert.IsTrue(response.IsSuccessStatusCode);
+
+        }
+
+        [TearDown]
+        public void Cleanup()
+        {
+            client.Dispose();
         }
     }
 }
