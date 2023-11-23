@@ -26,6 +26,7 @@ namespace API_Test
             HttpResponseMessage response = await client.GetAsync("https://newsapi.org/v2/everything?q=apple&from=2023-11-21&to=2023-11-21&sortBy=popularity&apiKey=API_KEY");
 
             Assert.IsTrue(response.IsSuccessStatusCode);
+            //Assert.That(response.Content ,Is.Not.Null);
 
         }
 
