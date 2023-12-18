@@ -23,7 +23,7 @@ namespace API_Test
         public async void NewsAPI()
         {
             //HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://newsapi.org/v2/everything?q=apple&from=2023-11-21&to=2023-11-21&sortBy=popularity&apiKey=API_KEY");
+            HttpResponseMessage response = await client.GetAsync("https://open.er-api.com/v6/latest/USD");
 
             Assert.IsTrue(response.IsSuccessStatusCode);
             //Assert.That(response.Content ,Is.Not.Null);
